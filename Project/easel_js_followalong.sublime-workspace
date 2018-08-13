@@ -264,13 +264,14 @@
 						],
 						"settings":
 						{
-							"syntax": "Packages/SublimeText2-EaselJS-Completion-master/EaselJS/JavaScript-EaselJS.tmLanguage"
+							"syntax": "Packages/SublimeText2-EaselJS-Completion-master/EaselJS/JavaScript-EaselJS.tmLanguage",
+							"translate_tabs_to_spaces": false
 						},
 						"translation.x": 0.0,
 						"translation.y": 0.0,
 						"zoom_level": 1.0
 					},
-					"stack_index": 0,
+					"stack_index": 1,
 					"type": "text"
 				},
 				{
@@ -293,14 +294,16 @@
 						{
 							"auto_indent": false,
 							"syntax": "Packages/Text/Plain text.tmLanguage",
+							"tab_size": 2,
 							"tab_width": 2,
+							"translate_tabs_to_spaces": true,
 							"word_wrap": true
 						},
 						"translation.x": 0.0,
 						"translation.y": 1316.0,
 						"zoom_level": 1.0
 					},
-					"stack_index": 1,
+					"stack_index": 2,
 					"type": "text"
 				}
 			]
@@ -322,8 +325,8 @@
 						"selection":
 						[
 							[
-								366,
-								366
+								258,
+								188
 							]
 						],
 						"settings":
@@ -335,7 +338,7 @@
 						"translation.y": 0.0,
 						"zoom_level": 1.0
 					},
-					"stack_index": 2,
+					"stack_index": 0,
 					"type": "text"
 				},
 				{
@@ -449,7 +452,7 @@
 		],
 		"width": 0.0
 	},
-	"selected_group": 0,
+	"selected_group": 1,
 	"settings":
 	{
 	},
