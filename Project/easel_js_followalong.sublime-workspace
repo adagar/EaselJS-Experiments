@@ -34,17 +34,6 @@
 			}
 		},
 		{
-			"contents": "Package Control Messages\n========================\n\nCanvas Snippets\n---------------\n\n  Below is a list of all the methods and properties of the Canvas' Context followed by its respective tabtrigger.\n  \n  Example:\n  \t1. To revel \"fillStyle\" property, type \"fist\" and enter TAB\n  \t2. To insert \"clearRect()\" methods, type \"clre\" and enter TAB\n  \tand so on............\n  \n  How to Use this CheatSheet:\n  \tctx.method/property - TabTrigger + TAB\n  \n  Note:\n  \t1. The Canvas' Context is set to \"ctx\" and cannot be changed\n  \t2. There are some MISC snippets, take a look at the MISC section\n  \t3. If you use Canvas Snippets often, save this file for easy reference\n  \n  COLOR, STYLE and SHADOW\n  \tctx.fillStyle - fist + TAB\n  \tctx.strokeStyle - stat + TAB\n  \tctx.shadowColor - shco + TAB\n  \tctx.shadowBlur - shbl + TAB\n  \tctx.shadowOffsetX - sox + TAB\n  \tctx.shadowOffsetY - soy + TAB\n  \tctx.createLinearGradient() - clg + TAB\n  \tctx.createRadialGradient() - crg + TAB\n  \tctx.createPattern() - cp + TAB\n  \tctx.addColorStop() - acs + TAB\n  \n  \n  LINE STYLE\n  \tctx.lineCap - lic + TAB\n  \tctx.lineJoin - lijo + TAB\n  \tctx.lineWidth - liwi + TAB\n  \tctx.miterLimit - mili + TAB\n  \n  \n  RECTANGLE\n  \tctx.rect() - re + TAB\n  \tctx.fillRect() - fire + TAB\n  \tctx.strokeRect() - stre + TAB\n  \tctx.clearRect() - clre + TAB\n  \n  \n  PATH\n  \tctx.fill() - fi + TAB\n  \tctx.stroke() - st + TAB\n  \tctx.beginPath() - bepa + TAB\n  \tctx.closePath() - clpa + TAB\n  \tctx.moveTo() - mot + TAB\n  \tctx.lineTo() - lit + TAB\n  \tctx.quadraticCurveTo() - qua + TAB\n  \tctx.bezierCurveTo() - bez + TAB\n  \tctx.arc() - ar + TAB\n  \tctx.arcTo() - art + TAB\n  \tctx.clip() - cl + TAB\n  \tctx.isPointInPath() - ipip + TAB\n  \n  \n  TRANSFORMATION\n  \tctx.scale() - sc + TAB\n  \tctx.rotate() - ro + TAB\n  \tctx.translate() - trsl + TAB\n  \tctx.transform() - trsf + TAB\n  \tctx.setTransform() - strsf + TAB\n  \n  \n  TEXT/FONT\n  \tctx.font - fo + TAB\n  \tctx.textAlign - teal + TAB\n  \tctx.textBaseline - teba + TAB\n  \tctx.fillText() - fite + TAB\n  \tctx.strokeText() - stte + TAB\n  \tctx.measureText() - mete + TAB\n  \n  \n  IMAGE DRAWING\n  \tctx.drawImage() - dr + TAB\n  \n  \n  PIXAL MANIPULATION\n  \tctx.createImageData() - cid + TAB\n  \tctx.getImageData() - gid + TAB\n  \tctx.putImageData() - pid + TAB\n  \n  \n  COMPOSITING\n  \tctx.globalAlpha - glal + TAB\n  \tctx.globalCompositeOperation - glco + TAB\n  \n  \n  OTHER\n  \tctx.save() - sa + TAB\n  \tctx.restore() - res + TAB\n  \tctx.createEvent() - crev + TAB\n  \tctx.getContext() - gco + TAB\n  \tctx.toDataURL() - tdu + TAB\n  \n  \n  MICS\n  \tHeight - he + TAB\n  \tWidth - wi + TAB\n  \tData - da + TAB\n  \tHTML BoilerPlate with a Canvas Tag - htmlcan + TAB\n  \tCanvas Tag with useful Attributes - cat + TAB\n  \tInitialize Canvas and Context - initcan + TAB\n  \tCenter all Canvas Tags - centcan + Tab\n  \n  \n  MATH\n  \tMath.PI - pi + TAB\n  \tMath.random() - rnd + TAB\n  \tMath.min() - min + TAB\n  \tMath.max() - max + TAB\n  \tMath.round() - round + TAB\n  \tMath.ceil() - cil + TAB\n  \tMath.floor() - flr + TAB\n",
-			"settings":
-			{
-				"buffer_size": 2966,
-				"line_ending": "Windows",
-				"name": "Package Control Messages",
-				"read_only": true,
-				"scratch": true
-			}
-		},
-		{
 			"file": "index.html",
 			"settings":
 			{
@@ -118,6 +107,7 @@
 	},
 	"expanded_folders":
 	[
+		"/C/Users/ngarza/Desktop/easel_js/Exercise Files",
 		"/C/Users/ngarza/Desktop/easel_js/Project",
 		"/C/Users/ngarza/Desktop/easel_js/Project/_",
 		"/C/Users/ngarza/Desktop/easel_js/Project/_/css",
@@ -242,7 +232,7 @@
 						"translation.y": 0.0,
 						"zoom_level": 1.0
 					},
-					"stack_index": 4,
+					"stack_index": 1,
 					"type": "text"
 				},
 				{
@@ -258,8 +248,8 @@
 						"selection":
 						[
 							[
-								794,
-								794
+								79,
+								93
 							]
 						],
 						"settings":
@@ -271,39 +261,7 @@
 						"translation.y": 0.0,
 						"zoom_level": 1.0
 					},
-					"stack_index": 1,
-					"type": "text"
-				},
-				{
-					"buffer": 2,
-					"semi_transient": false,
-					"settings":
-					{
-						"buffer_size": 2966,
-						"regions":
-						{
-						},
-						"selection":
-						[
-							[
-								2966,
-								2966
-							]
-						],
-						"settings":
-						{
-							"auto_indent": false,
-							"syntax": "Packages/Text/Plain text.tmLanguage",
-							"tab_size": 2,
-							"tab_width": 2,
-							"translate_tabs_to_spaces": true,
-							"word_wrap": true
-						},
-						"translation.x": 0.0,
-						"translation.y": 1316.0,
-						"zoom_level": 1.0
-					},
-					"stack_index": 2,
+					"stack_index": 0,
 					"type": "text"
 				}
 			]
@@ -313,7 +271,7 @@
 			"sheets":
 			[
 				{
-					"buffer": 3,
+					"buffer": 2,
 					"file": "index.html",
 					"semi_transient": false,
 					"settings":
@@ -325,8 +283,8 @@
 						"selection":
 						[
 							[
-								258,
-								188
+								366,
+								366
 							]
 						],
 						"settings":
@@ -338,11 +296,11 @@
 						"translation.y": 0.0,
 						"zoom_level": 1.0
 					},
-					"stack_index": 0,
+					"stack_index": 2,
 					"type": "text"
 				},
 				{
-					"buffer": 4,
+					"buffer": 3,
 					"file": "easel_js_followalong.sublime-project",
 					"semi_transient": false,
 					"settings":
@@ -452,7 +410,7 @@
 		],
 		"width": 0.0
 	},
-	"selected_group": 1,
+	"selected_group": 0,
 	"settings":
 	{
 	},

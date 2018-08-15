@@ -16,37 +16,19 @@
 	"buffers":
 	[
 		{
-			"file": "_/css/style.css",
+			"file": "/C/Users/ngarza/Desktop/easel_js/Exercise Files/03-01/working folder/easel/_/js/script.js",
 			"settings":
 			{
-				"buffer_size": 73,
+				"buffer_size": 750,
 				"encoding": "UTF-8",
-				"line_ending": "Windows"
+				"line_ending": "Unix"
 			}
 		},
 		{
-			"file": "_/js/script.js",
+			"file": "/C/Users/ngarza/Desktop/easel_js/Exercise Files/03-01/working folder/easel/index.html",
 			"settings":
 			{
-				"buffer_size": 57,
-				"encoding": "UTF-8",
-				"line_ending": "Windows"
-			}
-		},
-		{
-			"file": "index.html",
-			"settings":
-			{
-				"buffer_size": 294,
-				"encoding": "UTF-8",
-				"line_ending": "Windows"
-			}
-		},
-		{
-			"file": "easel_js_followalong.sublime-project",
-			"settings":
-			{
-				"buffer_size": 120,
+				"buffer_size": 391,
 				"line_ending": "Unix"
 			}
 		}
@@ -99,13 +81,27 @@
 	},
 	"expanded_folders":
 	[
-		"/C/Users/ngarza/Desktop/easel_js/Project",
-		"/C/Users/ngarza/Desktop/easel_js/Project/_",
-		"/C/Users/ngarza/Desktop/easel_js/Project/_/css",
-		"/C/Users/ngarza/Desktop/easel_js/Project/_/js"
 	],
 	"file_history":
 	[
+		"/C/Users/ngarza/Desktop/easel_js/Exercise Files/02-06/working folder/easel/index.html",
+		"/C/Users/ngarza/Desktop/easel_js/Exercise Files/02-06/working folder/easel/_/js/script.js",
+		"/C/Users/ngarza/Desktop/easel_js/Exercise Files/02-05/working folder/easel/index.html",
+		"/C/Users/ngarza/Desktop/easel_js/Exercise Files/02-06/working folder/easel/_/js/easel.js",
+		"/C/Users/ngarza/Desktop/easel_js/Exercise Files/02-05/working folder/easel/_/js/script.js",
+		"/C/Users/ngarza/Desktop/easel_js/Exercise Files/02-05/working folder/easel/_/js/easel.js",
+		"/C/Users/ngarza/Desktop/easel_js/Exercise Files/02-04/working folder/spinning-ship-test/index.html",
+		"/C/Users/ngarza/Desktop/easel_js/Project 2-2/_/js/script.js",
+		"/C/Users/ngarza/Desktop/easel_js/Exercise Files/02-04/working folder/spinning-ship-test/_/js/script.js",
+		"/C/Users/ngarza/Desktop/easel_js/Exercise Files/02-02/finished/easel/_/js/script.js",
+		"/C/Users/ngarza/Desktop/easel_js/Exercise Files/02-03/working folder/easel/_/js/script.js",
+		"/C/Users/ngarza/Desktop/easel_js/Exercise Files/02-03/finished/easel/_/js/script.js",
+		"/C/Users/ngarza/Desktop/easel_js/Exercise Files/02-04/working folder/easel/_/js/script.js",
+		"/C/Users/ngarza/Desktop/easel_js/Exercise Files/02-04/working folder/easel/index.html",
+		"/C/Users/ngarza/Desktop/easel_js/Project 2-3/index.html",
+		"/C/Users/ngarza/Desktop/easel_js/Project 2-3/_/js/script.js",
+		"/C/Users/ngarza/Desktop/easel_js/Project 2-3/_/css/style.css",
+		"/C/Users/ngarza/Desktop/easel_js/Project 2-3/easel_js_followalong.sublime-project",
 		"/C/Users/ngarza/Documents/GitHub/hacker_rank/algorithms/lisas_workbook.cs",
 		"/C/Users/ngarza/Documents/GitHub/hacker_rank/algorithms/designer_pdf.cs",
 		"/C/Users/ngarza/Documents/GitHub/hacker_rank/algorithms/utopian_tree.cs",
@@ -194,108 +190,50 @@
 	"groups":
 	[
 		{
-			"selected": 1,
+			"selected": 0,
 			"sheets":
 			[
 				{
 					"buffer": 0,
-					"file": "_/css/style.css",
+					"file": "/C/Users/ngarza/Desktop/easel_js/Exercise Files/03-01/working folder/easel/_/js/script.js",
 					"semi_transient": false,
 					"settings":
 					{
-						"buffer_size": 73,
+						"buffer_size": 750,
 						"regions":
 						{
 						},
 						"selection":
 						[
 							[
-								73,
-								73
+								716,
+								716
 							]
 						],
 						"settings":
 						{
-							"auto_name": "",
-							"syntax": "Packages/CSS/CSS.sublime-syntax"
+							"syntax": "Packages/SublimeText2-EaselJS-Completion-master/EaselJS/JavaScript-EaselJS.tmLanguage"
 						},
 						"translation.x": 0.0,
 						"translation.y": 0.0,
 						"zoom_level": 1.0
 					},
-					"stack_index": 3,
-					"type": "text"
-				},
-				{
-					"buffer": 1,
-					"file": "_/js/script.js",
-					"semi_transient": false,
-					"settings":
-					{
-						"buffer_size": 57,
-						"regions":
-						{
-						},
-						"selection":
-						[
-							[
-								55,
-								55
-							]
-						],
-						"settings":
-						{
-							"syntax": "Packages/JavaScript/JavaScript.sublime-syntax"
-						},
-						"translation.x": 0.0,
-						"translation.y": 0.0,
-						"zoom_level": 1.0
-					},
-					"stack_index": 2,
+					"stack_index": 0,
 					"type": "text"
 				}
 			]
 		},
 		{
-			"selected": 1,
+			"selected": 0,
 			"sheets":
 			[
 				{
-					"buffer": 2,
-					"file": "index.html",
+					"buffer": 1,
+					"file": "/C/Users/ngarza/Desktop/easel_js/Exercise Files/03-01/working folder/easel/index.html",
 					"semi_transient": false,
 					"settings":
 					{
-						"buffer_size": 294,
-						"regions":
-						{
-						},
-						"selection":
-						[
-							[
-								175,
-								175
-							]
-						],
-						"settings":
-						{
-							"auto_name": "",
-							"syntax": "Packages/HTML/HTML.sublime-syntax"
-						},
-						"translation.x": 0.0,
-						"translation.y": 0.0,
-						"zoom_level": 1.0
-					},
-					"stack_index": 1,
-					"type": "text"
-				},
-				{
-					"buffer": 3,
-					"file": "easel_js_followalong.sublime-project",
-					"semi_transient": false,
-					"settings":
-					{
-						"buffer_size": 120,
+						"buffer_size": 391,
 						"regions":
 						{
 						},
@@ -308,13 +246,13 @@
 						],
 						"settings":
 						{
-							"syntax": "Packages/JavaScript/JSON.sublime-syntax"
+							"syntax": "Packages/HTML/HTML.sublime-syntax"
 						},
 						"translation.x": 0.0,
 						"translation.y": 0.0,
 						"zoom_level": 1.0
 					},
-					"stack_index": 0,
+					"stack_index": 1,
 					"type": "text"
 				}
 			]
@@ -400,7 +338,7 @@
 		],
 		"width": 0.0
 	},
-	"selected_group": 1,
+	"selected_group": 0,
 	"settings":
 	{
 	},
