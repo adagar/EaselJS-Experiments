@@ -1,12 +1,12 @@
 function init() {
-	var canvas = document.getElementById("easel"),
+	const canvas = document.getElementById("easel"),
 	stage = new createjs.Stage(canvas),
-	centerX = canvas.width/2,
-	centerY = canvas.height/2,
+	centerX = canvas.width / 2,
+	centerY = canvas.height / 2,
 	ss = new createjs.SpriteSheet({
 		animations: {
 			fly: [0, 15],
-			explode: [16, 20, "fly"] },
+			explode: [15, 20, "fly"]},
 		images: ["images/shipsprites.png"],
 		frames: {
 			regX: 50,
@@ -16,14 +16,21 @@ function init() {
 		}
 	}),
 	ship = new createjs.BitmapAnimation(ss);
-	
-	ship.x = centerX;
-	ship.y = centerY;
-	ship.gotoAndPlay("explode");
 
-	stage.addChild(ship);	
+	ship.gotoAndPlay("fly");
+
+	stage.addChild(ship);
+
 	createjs.Ticker.setFPS(30);
 	createjs.Ticker.addListener(function() {
+		var difX = stage.mouseX - ship.x;
+		var difY = stage.mouseY - ship.y;
+
+		ship.x += difX / 20;
+		ship.y += difY / 20;
+
+		ship.rotation = Math.atan2(difY, difX) * (180 / Math.PI);
+
 		stage.update();
-	});
+	})
 }
