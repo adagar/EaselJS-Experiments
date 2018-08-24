@@ -26,7 +26,7 @@ function init() {
 			e.target.y = ev.stageY;
 		}
 	}
-	
+		
 	stage.enableMouseOver();
 	stage.addChild(ship);	
 	createjs.Ticker.setFPS(30);
