@@ -31,16 +31,36 @@ stage.addChild(shape);
 createjs.Ticker.framerate = 30;
 createjs.Ticker.addEventListener("tick", handleTick);
 
+  function Tiger(){
+    this.BitMap_constructor("https://cdn4.iconfinder.com/data/icons/vectortown-endangered-species/32/Tiger-512.png");
+  }
+  var p = createjs.extend(Tiger, createjs.BitMap);
+  
+  window.Tiger = createjs.promote(Tiger, "Bitmap");
+
+tigerList = [];
+
 function SpawnTiger() {
-    var newTiger = new createjs.Bitmap("https://cdn4.iconfinder.com/data/icons/vectortown-endangered-species/32/Tiger-512.png");
+    var newTiger = new Tiger();
     newTiger.regX = 256;
     newTiger.regY = 256;
     newTiger.scale = 0.1;
     newTiger.x = Math.random() * (CANVAS_POINTS.x2 - CANVAS_POINTS.x1) + CANVAS_POINTS.x1;
     newTiger.y = Math.random() * (CANVAS_POINTS.y2 - CANVAS_POINTS.y1) + CANVAS_POINTS.y1;
+
+    tigerList.push(newTiger);
     stage.addChild(newTiger); 
 };
 
 function handleTick(event) {
+  /*
+  if(tigerList.length > 0)
+  {
+    for(let tiger in tigerList){
+      tigerList[tiger].x += 1;
+      tigerList[tiger].y += 1;
+    }
+  }
+  */
   stage.update();
 }
