@@ -7,19 +7,20 @@
 	<link rel="stylesheet" href="https://maxcdn.bootstrapcdn.com/bootstrap/4.0.0/css/bootstrap.min.css" integrity="sha384-Gn5384xqQ1aoWXA+058RXPxPg6fy4IWvTNh0E263XmFcJlSAwiGgFAW/dAiS6JXm" crossorigin="anonymous">
 </head>
 <body>
+	<h1 class="text-center">Predator vs Prey</h1>
 	<div id="container">
-	  <canvas id = "PvsP" width="720" height="480"></canvas>
+	  <canvas id = "PvsP" width="720" height="360"></canvas>
 	  <div class = "gui left-gui">
 	  <img src="https://cdn4.iconfinder.com/data/icons/vectortown-endangered-species/32/Tiger-512.png" class="animal-icon"><br>
 		<div class="btn-group">  
-		<button type="button" class="btn btn-primary" onClick="SpawnTiger()">+</button>
+		<button type="button" class="btn btn-primary" onClick="SpawnAnimal('tiger')">+</button>
 		  <button type="button" class="btn btn-success">-</button>
 		</div>
 	  </div>
 	  <div class = "gui right-gui">
 		<img src = "https://static.thenounproject.com/png/181886-200.png" class="animal-icon">
 	  <div class="btn-group">
-	  <button type="button" class="btn btn-primary">+</button>
+	  <button type="button" class="btn btn-primary" onClick="SpawnAnimal('antelope')">+</button>
 		<button type="button" class="btn btn-success">-</button>
 	  </div>
 	  </div>

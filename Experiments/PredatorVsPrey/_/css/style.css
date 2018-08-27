@@ -3,9 +3,14 @@ canvas{
 	padding-right: 0;
 	margin-left: auto;
 	margin-right: auto;
+	margin-top: 75px;
 	display: block;
 	z-index:1;
-  }
+	}
+	h1{
+		margin-left: auto;
+		margin-right: auto;
+	}
   .gui{
 	z-index:2;
 	width: 150px;
