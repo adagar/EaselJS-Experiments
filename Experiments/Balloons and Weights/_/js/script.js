@@ -58,31 +58,51 @@ for(let i = -1 ; i < CANVAS_HEIGHT - 1; i+=40){
   stage.addChild(tick, tickText);
 }
 //add floating dirgible and its functions
+var dirgibleSystem = new createjs.Container();
 var dirgible = new createjs.Bitmap("_/images/dirgible.png");
-dirgible.regY = 50;
-dirgible.x = 40;
-dirgible.y = centerY;
-dirgible.ballonCount = 0;
-dirgible.weightCount = 0;
-dirgible.addDirgBalloon = function() {
-  this.ballonCount++;
+dirgibleSystem.regY = 50;
+dirgibleSystem.x = 40;
+dirgibleSystem.y = centerY;
+dirgibleSystem.balloonList = [];
+dirgibleSystem.weightList = [];
+dirgibleSystem.addDirgBalloon = function() {
+  let newBalloon = new createjs.Bitmap("_/images/soloBalloon.png");
+  newBalloon.regX = 27;
+  newBalloon.regY = 36;
+  newBalloon.x = Math.floor(Math.random() * 150) + 100;
+  newBalloon.y = -100;
+  dirgibleSystem.addChild(newBalloon);
+  var balloonString = new createjs.Shape();
+  balloonString.graphics
+    .clear()
+    .s("black")
+    .ss(1, 1, 1)
+    .mt(newBalloon.x, newBalloon.y+30)
+    .lt(dirgible.x+170, dirgible.y + 25)
+    .closePath();
+  dirgibleSystem.addChild(balloonString);
+  this.balloonList.push(newBalloon);
 };
-dirgible.removeDirgBalloon = function() {
-  this.ballonCount--;
+dirgibleSystem.removeDirgBalloon = function() {
+  dirgibleSystem.removeChild(this.balloonList.pop());
 };
-dirgible.addDirgWeight = function() {
-  this.weightCount++;
+dirgibleSystem.addDirgWeight = function() {
+  let newWeight = new createjs.Bitmap("_/images/soloWeight.png");
+  newWeight.x = Math.floor(Math.random() * 100) + 100;
+  newWeight.y = 100;
+  dirgibleSystem.addChild(newWeight);
+  this.weightList.push(newWeight);
 };
-dirgible.removeDirgWeight = function() {
-  this.weightCount--;
+dirgibleSystem.removeDirgWeight = function() {
+  dirgibleSystem.removeChild(this.weightList.pop());
 };
-dirgible.netWeight = function() {
-  let netWeight = this.ballonCount - this.weightCount;
+dirgibleSystem.netWeight = function() {
+  let netWeight = this.balloonList.length - this.weightList.length;
   //console.log(netWeight);
-  return this.ballonCount - this.weightCount;
+  return netWeight;
 };
-
-stage.addChild(dirgible);
+dirgibleSystem.addChild(dirgible);
+stage.addChild(dirgibleSystem);
 
 //add buttons
 var addBalloon = new createjs.Bitmap("_/images/plusBalloon.png");
@@ -91,7 +111,7 @@ addBalloon.regY = 65;
 addBalloon.x = 100;
 addBalloon.y = CANVAS_HEIGHT - 80;
 addBalloon.on("click", function(evt){
-  dirgible.addDirgBalloon();
+  dirgibleSystem.addDirgBalloon();
 });
 var minusBalloon = new createjs.Bitmap("_/images/minusBalloon.png");
 minusBalloon.regX = 50;
@@ -99,7 +119,7 @@ minusBalloon.regY = 65;
 minusBalloon.x = 200;
 minusBalloon.y = CANVAS_HEIGHT - 80;
 minusBalloon.on("click", function(evt){
-  dirgible.removeDirgBalloon();
+  dirgibleSystem.removeDirgBalloon();
 });
 var addWeight = new createjs.Bitmap("_/images/plusWeight.png");
 addWeight.regX = 50;
@@ -107,7 +127,7 @@ addWeight.regY = 65;
 addWeight.x = CANVAS_WIDTH - 100;
 addWeight.y = CANVAS_HEIGHT - 80;
 addWeight.on("click", function(evt){
-  dirgible.addDirgWeight();
+  dirgibleSystem.addDirgWeight();
 });
 var minusWeight = new createjs.Bitmap("_/images/minusWeight.png");
 minusWeight.regX = 50;
@@ -115,7 +135,7 @@ minusWeight.regY = 65;
 minusWeight.x = CANVAS_WIDTH - 200;
 minusWeight.y = CANVAS_HEIGHT - 80;
 minusWeight.on("click", function(evt){
-  dirgible.removeDirgWeight();
+  dirgibleSystem.removeDirgWeight();
 });
 stage.addChild(addBalloon, minusBalloon, addWeight, minusWeight);
 
@@ -137,6 +157,6 @@ createjs.Ticker.framerate = 30;
 createjs.Ticker.addEventListener("tick", handleTick);
 
 function handleTick(event) {
-  dirgible.y = centerY - dirgible.netWeight() * 40;
+  dirgibleSystem.y = centerY - dirgibleSystem.netWeight() * 40;
   stage.update();
 }
