@@ -22,21 +22,62 @@ shape.regX = CANVAS_WIDTH / 2;
 shape.regY = CANVAS_HEIGHT / 2;
 shape.x = centerX;
 shape.y = centerY;
+stage.addChild(shape);
 
 var line = new createjs.Shape();
-
 line.graphics
   .s("black")
   .ss(3, 1, 1)
   .mt(40, 0)
   .lt(40, CANVAS_POINTS.y2)
   .closePath();
-
-stage.addChild(shape);
 stage.addChild(line);
+
+var balloon = new createjs.Bitmap("_/images/soloBalloon.png");
+balloon.regX = 18;
+balloon.regY = 40;
+balloon.x = centerX;
+balloon.y = centerY;
+balloon.float = false;
+stage.addChild(balloon);
+var balloonString = new createjs.Shape();
+
+balloon.on("click", function(evt) {
+  balloon.isFloating = true;
+});
+
+stage.on("stagemouseup", function(evt) {
+  balloon.isFloating = false;
+})
+
+var chair = new createjs.Bitmap("_/images/dirgible.png");
 createjs.Ticker.framerate = 30;
 createjs.Ticker.addEventListener("tick", handleTick);
 
 function handleTick(event) {
+  
+  if(balloon.isFloating)
+  {
+    if(Math.abs(stage.mouseY - balloon.y < 100))
+    {
+      balloon.y -= 5;
+    }
+    else{
+      balloon.y = stage.mouseY - 100;
+    }
+    
+    balloonXDiff = balloon.x - stage.mouseX;
+    balloon.x -= balloonXDiff / 20;
+    
+    balloonString.graphics
+      .clear()
+      .s("black")
+      .ss(1, 1, 1)
+      .mt(balloon.x, balloon.y)
+      .lt(stage.mouseX, stage.mouseY)
+      .closePath();
+    stage.addChild(balloonString);
+
+  }
   stage.update();
 }
