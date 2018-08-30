@@ -57,9 +57,20 @@ for(let i = -1 ; i < CANVAS_HEIGHT - 1; i+=40){
 
   stage.addChild(tick, tickText);
 }
+
+//GAME LOGIC///////////////
+let GAME_STATE = "playing";
+function LoseGame(){
+  GAME_STATE = "lost";
+}
+///////////////////////////
 //add floating dirgible and its functions
 var dirgibleSystem = new createjs.Container();
 var dirgible = new createjs.Bitmap("_/images/dirgible.png");
+dirgible.setBounds(0, 40, 250, 130);
+var linePointer = new createjs.Bitmap("_/images/linePointer.png");
+linePointer.x = -260;
+dirgibleSystem.addChild(linePointer, dirgible, );
 dirgibleSystem.regY = 50;
 dirgibleSystem.x = 40;
 dirgibleSystem.y = centerY;
@@ -80,10 +91,12 @@ dirgibleSystem.addDirgBalloon = function() {
     .mt(newBalloon.x, newBalloon.y+30)
     .lt(dirgible.x+170, dirgible.y + 25)
     .closePath();
+  newBalloon.personalString = balloonString;
   dirgibleSystem.addChild(balloonString);
   this.balloonList.push(newBalloon);
 };
 dirgibleSystem.removeDirgBalloon = function() {
+  dirgibleSystem.removeChild(this.balloonList[this.balloonList.length - 1].personalString);
   dirgibleSystem.removeChild(this.balloonList.pop());
 };
 dirgibleSystem.addDirgWeight = function() {
@@ -101,7 +114,7 @@ dirgibleSystem.netWeight = function() {
   //console.log(netWeight);
   return netWeight;
 };
-dirgibleSystem.addChild(dirgible);
+
 stage.addChild(dirgibleSystem);
 
 //add buttons
@@ -139,24 +152,78 @@ minusWeight.on("click", function(evt){
 });
 stage.addChild(addBalloon, minusBalloon, addWeight, minusWeight);
 
-/*
-var balloon = new createjs.Bitmap("_/images/soloBalloon.png");
-balloon.regX = 29;
-balloon.regY = 40;
-balloon.x = CANVAS_WIDTH - 40;
-balloon.y = centerY;
-balloon.float = false;
-stage.addChild(balloon);
-
-
-balloon.on("click", function(evt) {
-});
-*/
+//add enemies
+const enemyList = [];
+function SpawnEnemy(){
+  let randomHeight = (Math.random() * 640) + 40;
+  console.log(randomHeight);
+  if(randomHeight <= centerY){
+    var newEnemy = new createjs.Bitmap("_/images/dinosaurEnemy.png");
+  } else{
+    var newEnemy = new createjs.Bitmap("_/images/sharkEnemy.png");
+  }
+  newEnemy.regX = 150;
+  newEnemy.regY = 75;
+  newEnemy.x = 1500;
+  newEnemy.y = randomHeight;
+  newEnemy.CheckIntersection = function(rect2){
+    shipBox = {
+      x: rect2.x + 150,
+      y: rect2.y,
+      width: 250,
+      height: 132 
+    }
+    enemyBox = {
+      x: this.x,
+      y: this.y,
+      width: 300,
+      height: 150
+    }
+   
+    //DrawBoundingBox(shipBox);
+    //DrawBoundingBox(enemyBox);
+    if ( shipBox.x >= enemyBox.x + enemyBox.width || shipBox.x + shipBox.width <= enemyBox.x || shipBox.y >= enemyBox.y + enemyBox.height || shipBox.y + shipBox.height <= enemyBox.y )
+    {
+      return false;
+    }else{
+      LoseGame();
+      return true;
+    }    
+    
+  }
+  
+  enemyList.push(newEnemy);
+  stage.addChild(newEnemy);
+}
+//enemies scroll
+//collisions lose
 
 createjs.Ticker.framerate = 30;
 createjs.Ticker.addEventListener("tick", handleTick);
-
+const ENEMY_SPAWN_RATE = 3000;
+let enemySpawn = ENEMY_SPAWN_RATE;
+SpawnEnemy();
 function handleTick(event) {
-  dirgibleSystem.y = centerY - dirgibleSystem.netWeight() * 40;
+  if(GAME_STATE == "playing"){
+    dirgibleSystem.y = centerY - dirgibleSystem.netWeight() * 40;
+
+    enemySpawn -= createjs.Ticker.interval;
+    if(enemySpawn < 0)
+    {
+      SpawnEnemy();
+      enemySpawn = ENEMY_SPAWN_RATE;
+    }
+    for(let enemy in enemyList){
+      enemyList[enemy].x -= 5;
+      enemyList[enemy].CheckIntersection(dirgibleSystem);
+    }
+    if(dirgibleSystem.x < 275){
+      dirgibleSystem.x += 4;
+    }
+  } else{
+    dirgibleSystem.y += ((Math.random() * -4) + 8);
+    dirgibleSystem.x -= ((Math.random() * -4) + 8);
+  }
+  
   stage.update();
 }
