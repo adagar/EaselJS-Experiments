@@ -28,6 +28,8 @@ var Game ={
         Enemy.enemyList[0].y = Layout.centerY - Player.netWeight() * 40;
     },
     UpdatePlayer: function(){
+        let newText = "-"+ Player.balloonList.length + " + " + Player.weightList.length + " = -" + Player.netWeight();
+        Layout.updateEquation(newText);
         Player.dirgibleSystem.y = Layout.centerY - Player.netWeight() * 40;
     },
     UpdateEnemies: function(){

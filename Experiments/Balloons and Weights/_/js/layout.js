@@ -5,6 +5,16 @@ var Layout ={
     centerY:0,
     stage: null,
     submitButton: null,
+    equation: null,
+    updateEquation: function(newText){
+        this.equation.text = newText;
+    },
+    addEquation: function(){
+        this.equation = new createjs.Text("", "18px Arial", "black");
+        this.equation.x = 1150;
+        this.equation.y = 50;
+        this.stage.addChild(this.equation);
+    },
     StartGame: function(){
         var canvas = document.getElementById("easel");
         this.stage = new createjs.Stage(canvas);
@@ -52,6 +62,8 @@ var Layout ={
             tickText.align = "center";
         
             this.stage.addChild(tick, tickText);
+
+            this.addEquation();
         }
 
         //if learning, add submit button
