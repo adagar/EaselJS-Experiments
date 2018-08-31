@@ -4,6 +4,15 @@ var Game ={
     GenerateProblem: function(){
         //set a height
 
+        console.log(Player.balloonList.length);
+        while(Player.balloonList.length > 0){
+            
+            Player.removeDirgBalloon();
+        }
+        while(Player.weightList.length > 0){
+            Player.removeDirgWeight();
+        }
+        Layout.stage.update();
         let height = GenerateRandom(-8, 8);
         let balloons = GenerateRandom(0, 8);
         let weights = balloons - height;
@@ -25,6 +34,10 @@ var Game ={
         for(let enemy in Enemy.enemyList){
             Enemy.enemyList[enemy].x -= 5;
             Enemy.enemyList[enemy].CheckIntersection(Player.dirgibleSystem);
+            if(Enemy.enemyList[enemy].x < 0){
+                Layout.stage.removeChild(Enemy.enemyList.shift());
+                this.UpdateEnemies();
+            }
         }
     }
 }

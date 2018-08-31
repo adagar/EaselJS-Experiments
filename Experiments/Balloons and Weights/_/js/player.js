@@ -22,6 +22,7 @@ var Player = {
         this.balloonList.push(newBalloon);
     },
     removeDirgBalloon: function(){
+        console.log("Removing balloon from function");
         this.dirgibleSystem.removeChild(this.balloonList[this.balloonList.length - 1].personalString);
         this.dirgibleSystem.removeChild(this.balloonList.pop());
     },

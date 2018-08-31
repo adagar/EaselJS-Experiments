@@ -74,14 +74,17 @@ function handleTick(event) {
     Game.UpdatePlayer();
     Enemy.enemyList[0].x = 1000;
   } else if(Game.state == "runProblem"){
-    Game.UpdateEnemies();
-    if(Enemy.enemyList[0].x < 0){
+    
+    if(Enemy.enemyList.length == 0 || Enemy.enemyList[0].x < 0){
       Game.score = Game.score + 1;
+      Game.state = "learning";
+      Game.GenerateProblem();
     }
-    if(Game.score > 0){
+    if(Game.score > 3){
       Game.state = "playing";
       Layout.stage.removeChild(Layout.submitButton);
     }
+    Game.UpdateEnemies();
   }
    Layout.stage.update();
 }
