@@ -53,7 +53,7 @@ var Player = {
         Layout.stage.addChild(this.dirgibleSystem);
     },
     netWeight: function(){
-        let netWeight = this.balloonList.length - this.weightList.length;
+        let netWeight = -this.balloonList.length + this.weightList.length;
         //console.log(netWeight);
         return netWeight; 
     }
