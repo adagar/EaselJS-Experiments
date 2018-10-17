@@ -53,6 +53,13 @@ p.setup = function() {
 
     this.addChild(topTextField);
     topTextField.update();
+
+    const bottomTextField = new TextInput();
+    bottomTextField.x = this.x - 30;
+    bottomTextField.y = this.y + 25;
+
+    this.addChild(bottomTextField);
+    bottomTextField.update();
   }
 
   this.mouseChildren = true;

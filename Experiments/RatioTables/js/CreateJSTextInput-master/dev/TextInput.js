@@ -140,14 +140,11 @@ class TextInput extends createjs.Container {
       const cY = this.parent.stage.canvas.offsetTop;
       //console.log(pY);
       // Local
-      const lX = pX - cX - this.parent.x + 30;
-      const lY = pY - cY - this.parent.y + 15;
-      console.log(lX);
-      console.log(lY);
-      //console.log(this.x);
-      //console.log(this.y);
+      const lX = pX - cX - this.parent.x - this.x;
+      const lY = pY - cY - this.parent.y - this.y;
       console.log({x: lX, y: lY});
       this._click({x: lX, y: lY});
+      //this._click({x:0, y:0})
     });
     this._hiddenInput.addEventListener('input', (e) => {
       if (this._focused) {
