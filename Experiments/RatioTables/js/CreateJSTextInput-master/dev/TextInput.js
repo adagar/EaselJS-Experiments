@@ -46,6 +46,8 @@ class TextInput extends createjs.Container {
   _setupDomNode() {
     this._hiddenInput = document.createElement('input');
     this._hiddenInput.type = 'text';
+    this._hiddenInput.size = '4';
+    this._hiddenInput.maxLength = '5';
     this._hiddenInput.style.display = 'none';
     this._hiddenInput.style.position = 'absolute';
     this._hiddenInput.style.zIndex = -100;
@@ -186,9 +188,9 @@ class TextInput extends createjs.Container {
 
   _selectInput() {
     this._hiddenInput.style.display = 'block';
-    this._hiddenInput.style.left = (this.x + this.parent.stage.canvas.offsetLeft + this._padding + 500) + 'px';
-    this._hiddenInput.style.top = (this.y + this.parent.stage.canvas.offsetTop + this._padding) + 'px';
-    this._hiddenInput.style.color = "blue";
+    //this._hiddenInput.style.visibility = 'hidden';
+    this._hiddenInput.style.left = (this.x + this.parent.stage.canvas.offsetLeft + this._padding + this.parent.x) + 'px';
+    this._hiddenInput.style.top = (this.y + this.parent.stage.canvas.offsetTop + this._padding + this.parent.y) + 'px';
     this._hiddenInput.focus();
   }
 
