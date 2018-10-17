@@ -2,12 +2,13 @@ import { Constants } from "./main.js";
 import AddColBtn from "./AddBtn.js";
 import RmColBtn from "./RmBtn.js";
 
-export default function Column(isHeader, content, editable) {
+export default function Column(isHeader, content, editable, colNum) {
   this.Container_constructor();
 
   this.isHeader = isHeader;
   this.content = content;
   this.editable = editable;
+  this.colNum = colNum;
 
   this.setup();
 }
@@ -32,7 +33,7 @@ p.setup = function() {
 
   //draw two cells in one column
   const row1 = this.drawCell(0, 0, width, height / 2);
-  console.log(row1);
+  //console.log(row1);
   const row2 = this.drawCell(0, height / 2, width, height / 2);
 
   var addBtn = this.addChild(new AddColBtn());
@@ -46,7 +47,7 @@ p.setup = function() {
     rmBtn.x = this.x;
     rmBtn.y = this.y;
 
-    console.log("Adding input");
+    //console.log("Adding input");
     const topTextField = new TextInput();
     topTextField.x = this.x - 30;
     topTextField.y = this.y - 15;
@@ -69,7 +70,7 @@ p.drawCell = function(x, y, width, height) {
   var cell = new createjs.Shape();
   cell.graphics.beginStroke("black");
   if (this.isHeader) {
-    console.log("I'm a header!");
+    //console.log("I'm a header!");
     cell.graphics.beginFill("#87CEFA");
   }
   cell.graphics.drawRect(0, 0, width, height);
