@@ -48,14 +48,19 @@ p.setup = function() {
     rmBtn.y = this.y;
 
     //console.log("Adding input");
-    const topTextField = new TextInput();
+    const textFieldSpecs = {
+      width: Constants.TEXT_WIDTH,
+      height: Constants.TEXT_HEIGHT
+    }
+
+    const topTextField = new TextInput(textFieldSpecs);
     topTextField.x = this.x - 30;
     topTextField.y = this.y - 15;
 
     this.addChild(topTextField);
     topTextField.update();
 
-    const bottomTextField = new TextInput();
+    const bottomTextField = new TextInput(textFieldSpecs);
     bottomTextField.x = this.x - 30;
     bottomTextField.y = this.y + 25;
 

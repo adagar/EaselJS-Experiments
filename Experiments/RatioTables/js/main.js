@@ -10,7 +10,9 @@ var Layout = {
 
 export var Constants = {
   COL_WIDTH: 70,
-  COL_HEIGHT: 80
+  COL_HEIGHT: 80,
+  TEXT_WIDTH: 60,
+  TEXT_HEIGHT: 30
 };
 
 export function AddColumn(colCaller) {
