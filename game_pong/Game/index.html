@@ -1,0 +1,125 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <meta http-equiv="X-UA-Compatible" content="ie=edge">
+    <title>Canvas Game</title>
+    <script src="https://code.createjs.com/createjs-2015.11.26.min.js"></script>
+</head>
+<body onload="init();">
+    <canvas id="demoCanvas" width="1000" height="500"></canvas>
+
+    <script>
+    var stage;
+    const PADDLE_WIDTH = 100;
+    const PADDLE_HEIGHT = 20;
+    const BRICKS_WIDTH = 60;
+    const BRICKS_HEIGHT = 30;
+    const BALL_RADIUS = 8;
+    var paddle;
+    var ball;
+    var bricks = [];
+
+    function init()
+    {
+        stage = new createjs.Stage("demoCanvas");
+        createjs.Ticker.setFPS(60);
+        createjs.Ticker.addEventListener("tick", tick);
+
+        createBrickGrid();
+        createBall();
+        createPaddle();
+    }
+
+    function tick() 
+    {
+        stage.update();
+
+        if(ball.up)
+        {
+            ball.y -= ball.ySpeed;
+            ball.x -= ball.ySpeed;
+        }
+
+        for(var i = 0; i< bricks.length; i++)
+        {
+            if(checkCollision(ball, bricks[i]))
+            {
+                destroyBrick(bricks[i]);
+            }
+        }
+    }
+
+    function checkCollision(ballElement, brickElement)
+    {
+        if( ballElement.x + BALL_RADIUS <= brickElement.x - BRICKS_WIDTH / 2 ||
+            ballElement.x - BALL_RADIUS >= brickElement.x + BRICKS_WIDTH / 2 ||
+            ballElement.y - BALL_RADIUS >= brickElement.y + BRICKS_HEIGHT / 2 ||
+            ballElement.y + BALL_RADIUS <= brickElement.y - BRICKS_HEIGHT / 2)
+            {
+                return false;
+            }
+        return true;
+    }
+    function createBrickGrid() {
+        for(var i = 0; i < 14; i++)
+        {
+            for(var j = 0; j < 5; j++){
+                createBrick(i*(BRICKS_WIDTH + 10) + 40, j * (BRICKS_HEIGHT + 5) + 20);
+            }
+        }    
+    }
+    
+
+    function createBrick(x, y)
+    {
+        var brick = new createjs.Shape();
+        brick.graphics
+            .beginFill('Blue')
+            .drawRect(0, 0, BRICKS_WIDTH, BRICKS_HEIGHT);
+        brick.regX = BRICKS_WIDTH / 2;
+        brick.regY = BRICKS_HEIGHT / 2;
+        brick.x = x;
+        brick.y = y;
+        
+        stage.addChild(brick);
+        bricks.push(brick);
+    }
+
+    function createBall()
+    {
+        ball = new createjs.Shape();
+        ball.graphics
+            .beginFill("Red")
+            .drawCircle(0, 0, BALL_RADIUS);
+        ball.x = stage.canvas.width / 2;
+        ball.y = stage.canvas.height / 2;
+        stage.addChild(ball);
+
+        ball.up = true;
+        ball.right = true;
+        ball.xSpeed = 0;
+        ball.ySpeed = 1;
+        ball.lastX = 0;
+        ball.lastY = 0;
+    }
+
+    function createPaddle()
+    {
+        paddle = new createjs.Shape();
+        paddle.graphics
+            .beginFill("#000000")
+            .drawRect(0, 0, PADDLE_WIDTH, PADDLE_HEIGHT);
+        paddle.x = stage.canvas.width / 2 - PADDLE_WIDTH / 2;
+        paddle.y = stage.canvas.height * .9;
+        stage.addChild(paddle);
+    }
+
+    function destroyBrick(brick)
+    {
+        createjs.Tween.get(brick, {}).to({scaleX: 0, scaleY: 0}, 500);
+    }
+    </script>
+</body>
+</html>
