@@ -172,6 +172,7 @@ class TextInput extends createjs.Container {
 
     this._placeHolderText.visible = !this._focused && this._hiddenInput.value === "";
     if (this._focused) {
+    	this._hiddenInput.style.zIndex = -100;
       this._selectInput();
     } else {
       this._deSelectInput();
