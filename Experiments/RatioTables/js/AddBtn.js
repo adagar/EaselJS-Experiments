@@ -28,7 +28,7 @@ p.setup = function() {
 };
 
 p.handleClick = function(event) {
-  AddColumn();
+  AddColumn(this.parent.colNum);
 };
 
 p.handleRollOver = function(event) {

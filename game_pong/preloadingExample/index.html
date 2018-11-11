@@ -1,0 +1,41 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <meta http-equiv="X-UA-Compatible" content="ie=edge">
+    <title>Document</title>
+    <script src="https://code.createjs.com/createjs-2015.11.26.min.js"></script>
+</head>
+<body onload="init();">
+    <script>
+        var queue = new createjs.LoadQueue();
+
+        function init()
+        {
+            queue.on("progress", handleFileProgress);
+            queue.on("fileload", handleFileLoad);
+            queue.on("complete", handleComplete);
+
+            queue.loadManifest([
+                {id: "myImage", src: "./assets/column_labels.PNG"},
+                {id: "myImage2", src: "./assets/rp-t2_1.PNG"},
+                {id: "myImage3", src: "./assets/rp-t2_2.PNG"}
+            ]);
+        }
+
+        function handleFileProgress(event){
+            console.log("Progress: " + queue.progress * 100 + "%");
+        }
+
+        function handleFileLoad(event) {
+            var img = queue.getResult(event.item.id);
+            document.body.appendChild(img);
+        }
+
+        function handleComplete(event) {
+            console.log("Loading complete...");
+        }
+        </script>
+</body>
+</html>

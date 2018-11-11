@@ -1,3 +1,5 @@
+import { RmColumn } from "./main.js";
+
 export default function RmColBtn() {
   this.Container_constructor();
   this.setup();
@@ -24,8 +26,7 @@ p.setup = function() {
 };
 
 p.handleClick = function(event) {
-  alert("You clicked on an remove button");
-  console.log("Remove button clicked");
+  RmColumn(this.parent.colNum);
 };
 
 p.handleRollOver = function(event) {

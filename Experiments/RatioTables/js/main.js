@@ -10,18 +10,50 @@ var Layout = {
 
 export var Constants = {
   COL_WIDTH: 70,
-  COL_HEIGHT: 80
+  COL_HEIGHT: 80,
+  TEXT_WIDTH: 60,
+  TEXT_HEIGHT: 30
 };
 
-export function AddColumn() {
+export function AddColumn(colCaller) {
   //alert("You clicked on an add button");
-  //console.log("Add button clicked");
+  console.log("Add button clicked by column #", colCaller);
   const emptyContent = {
     top: "",
     bottom: ""
   };
-  const newCol = stage.addChild(new Column(false, emptyContent, true));
-  colList.push(newCol);
+  let newColNum; 
+
+  //check if col is going to need to be inserted
+  if(colCaller < colList.length - 1)
+  {
+    console.log("I should be inserting");
+    for(let i = colCaller + 1; i < colList.length; i++)
+    {
+      colList[i].colNum += 1;
+    }
+    const newCol = stage.addChild(new Column(false, emptyContent, true, colCaller + 1));
+    colList.splice(colCaller + 1, 0, newCol);
+  }
+  else {
+    newColNum = colList.length;
+    const newCol = stage.addChild(new Column(false, emptyContent, true, newColNum));
+    colList.push(newCol);
+  }
+  
+  updateColumns();
+}
+
+export function RmColumn(colCaller) {
+  //alert("You clicked on an add button");
+  console.log("Remove button clicked by column #", colCaller);
+  let removed = colList.splice(colCaller, 1)
+  console.log(removed);
+  stage.removeChild(removed[0]);  
+  for(let i = colCaller; i < colList.length; i++)
+  {
+    colList[i].colNum -= 1;
+  }
   updateColumns();
 }
 
@@ -56,7 +88,7 @@ const headers = {
   top: "cheese",
   bottom: "peppers"
 };
-var col1 = stage.addChild(new Column(true, headers, false));
+var col1 = stage.addChild(new Column(true, headers, false, 0));
 
 colList.push(col1);
 
@@ -64,7 +96,7 @@ const content = {
   top: "10",
   bottom: "5"
 };
-var col2 = stage.addChild(new Column(false, content, false));
+var col2 = stage.addChild(new Column(false, content, false, 1));
 colList.push(col2);
 
 createjs.Ticker.on("tick", function() {
