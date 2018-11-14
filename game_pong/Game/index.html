@@ -20,6 +20,10 @@
     var paddle;
     var ball;
     var bricks = [];
+    let score = 0;
+    let lives = 3;
+    let scoreText;
+    let gameStarted = false;
 
     function init()
     {
@@ -28,13 +32,65 @@
         createjs.Ticker.addEventListener("tick", tick);
 
         createBrickGrid();
-        createBall();
         createPaddle();
+        createBall();        
+        createScoreText();
+
+        stage.on("stagemousedown", (event) => {
+            if(!(gameStarted))
+            {
+                gameStarted = true;
+                ball.xSpeed = 5;
+                ball.ySpeed = 5;
+                ball.up = true;
+                ball.right = true;
+            }
+        })
+    }
+
+    function createScoreText() {
+        scoreText = new createjs.Text("", "16px Arial", "#000000");
+        scoreText.y = stage.canvas.height - 16;
+        scoreText.text = "Score: " + score + "/ Lives: " + lives;
+        stage.addChild(scoreText);
+    }
+
+    function addToScore(points) {
+        score += points;
+        scoreText.text = "Score: " + score + "/ Lives: " + lives;
+    }
+
+    function loseLife() {
+        lives--;
+        scoreText.text = "Score: " + score + "/ Lives: " + lives;
+        ball.xSpeed = 0;
+        ball.ySpeed = 0;
+        ball.x = paddle.x;
+        ball.y = paddle.y - ((PADDLE_HEIGHT/2) + BALL_RADIUS) - 1;
+        gameStarted = false;
     }
 
     function tick() 
     {
+        paddle.x = stage.mouseX;
         stage.update();
+
+        if(paddle.x + PADDLE_WIDTH / 2 > stage.canvas.width)
+        {
+            paddle.x = stage.canvas.width - PADDLE_WIDTH / 2;
+        }
+
+        if(paddle.x - PADDLE_WIDTH / 2 < 0)
+        {
+            paddle.x = PADDLE_WIDTH / 2;
+        }
+
+        if(!gameStarted){
+            ball.x = paddle.x;
+            ball.y = paddle.y - ((PADDLE_HEIGHT/2) + BALL_RADIUS) - 1;  
+            stage.update();
+            return;
+        }
 
         if(ball.up)
         {
@@ -56,9 +112,14 @@
         {
             if(checkCollision(ball, bricks[i]))
             {
+                addToScore(100);
                 destroyBrick(bricks[i]);
                 bricks.splice(i, 1);
                 i--;
+            }
+
+            if(checkCollision(ball, paddle)){
+                newBallXSpeedAfterCollision(ball, paddle);
             }
 
             if(ball.x + BALL_RADIUS >= stage.canvas.width)
@@ -81,8 +142,7 @@
             //TODO, this should trigger lose-life state
             if(ball.y + BALL_RADIUS >= stage.canvas.height)
             {
-                ball.y = stage.canvas.height - BALL_RADIUS;
-                ball.up = true;
+                loseLife();
             }
 
             ball.lastX = ball.x;
@@ -94,7 +154,7 @@
     {
         var leftBorder = (hitElement.x - hitElement.getBounds().width / 2);
         var rightBorder = (hitElement.x + hitElement.getBounds().width / 2);
-        var topBorder = (hitElement.y -hitElement.getBounds().height / 2);
+        var topBorder = (hitElement.y - hitElement.getBounds().height / 2);
         var bottomBorder = (hitElement.y + hitElement.getBounds().height / 2);
         var previousBallLeftBorder = ballElement.lastX - BALL_RADIUS;
         var previousBallRightBorder = ballElement.lastX + BALL_RADIUS;
@@ -108,8 +168,9 @@
         if((ballLeftBorder <= rightBorder) && (ballRightBorder >= leftBorder) && (ballTopBorder <= bottomBorder) && (ballBottomBorder >= topBorder))
         {
             //hit from bottom
-            if((ballTopBorder <= bottomBorder) && (previousBallTopBorder > bottomBorder))
+            if((ballTopBorder <= bottomBorder) && (previousBallTopBorder < bottomBorder))
             {
+                console.log("Hit from bottom");
                 ballElement.up = false;
                 ballElement.y = bottomBorder + BALL_RADIUS;
             }
@@ -117,6 +178,7 @@
             //hit from top
             if((ballBottomBorder >= topBorder) && (previousBallBottomBorder < topBorder))
             {
+                console.log("Hit from top");
                 ballElement.up = true;
                 ballElement.y = topBorder - BALL_RADIUS;
             }
@@ -193,14 +255,14 @@
         ball.graphics
             .beginFill("Red")
             .drawCircle(0, 0, BALL_RADIUS);
-        ball.x = stage.canvas.width / 2;
-        ball.y = stage.canvas.height / 2;
+        ball.x = paddle.x;
+        ball.y = paddle.y - ((PADDLE_HEIGHT/2) + BALL_RADIUS) - 1;
         stage.addChild(ball);
 
         ball.up = true;
         ball.right = true;
         ball.xSpeed = 0;
-        ball.ySpeed = 1;
+        ball.ySpeed = 0;
         ball.lastX = 0;
         ball.lastY = 0;
     }
@@ -222,6 +284,10 @@
     function destroyBrick(brick)
     {
         createjs.Tween.get(brick, {}).to({scaleX: 0, scaleY: 0}, 500);
+        setTimeout(removeBrickFromScreen(brick), 500);
+    }
+    function removeBrickFromScreen(brick) {
+        stage.removeChild(brick);
     }
 
     </script>
