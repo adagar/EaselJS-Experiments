@@ -1,9 +1,14 @@
-export default class Integer {
+export default class AddInteger{
     constructor(value){
         this.value = value;
+        p.setup(value);
     }
 
-    const p = createjs.extend(Integer, createjs.Container);
+    p = createjs.extend(Integer, createjs.Container);
+
+    p.setup = () => {
+        
+    }
 
 
 }
